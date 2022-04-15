@@ -1,29 +1,13 @@
 const express = require('express')
-const { restart } = require('nodemon')
 const router = express.Router()
+const { getGoals, setGoals, updateGoal, deleteGoal } = require('../controllers/goalsController')
 
-router.get('/', (req, res) => {
-  res.status(200).json({
-		message: 'get goal'
-  })
-})
+// router.get('/', getGoals)
+// router.post('/', setGoals)
 
-router.post('/', (req, res) => {
-  res.status(200).json({
-		message: 'set goal'
-  })
-})
+//Above routes can also be written like shown below
+router.route('/').get(getGoals).post(setGoals)
+router.route('/:id').put(updateGoal).delete(deleteGoal)
 
-router.put('/:id', (req, res) => {
-  res.status(200).json({
-		message: `Goal update ${req.params.id}`
-  })
-})
-
-router.delete('/:id', (req, res) => {
-  res.status(200).json({
-		message: `Goal delete ${req.params.id}`
-  })
-})
 
 module.exports = router
