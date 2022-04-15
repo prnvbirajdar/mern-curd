@@ -5,7 +5,7 @@ const { getGoals, setGoals, updateGoal, deleteGoal } = require('../controllers/g
 // router.get('/', getGoals)
 // router.post('/', setGoals)
 
-//Above routes can also be written like shown below
+// Above routes can also be written like shown below
 router.route('/').get(getGoals).post(setGoals)
 router.route('/:id').put(updateGoal).delete(deleteGoal)
 
